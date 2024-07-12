@@ -66,7 +66,7 @@ describe("useCRUD", () => {
       });
 
       expect(mockDispatch).toHaveBeenCalledWith(
-        setModal({ modalOpen: false, modalStatus: "ADD" })
+        setModal({ modalOpen: true, modalStatus: "ADD" })
       );
     });
 
@@ -78,7 +78,7 @@ describe("useCRUD", () => {
       });
 
       expect(mockDispatch).toHaveBeenCalledWith(
-        setModal({ modalOpen: false, modalStatus: "EDIT" })
+        setModal({ modalOpen: true, modalStatus: "EDIT" })
       );
     });
 
@@ -90,7 +90,7 @@ describe("useCRUD", () => {
       });
 
       expect(mockDispatch).toHaveBeenCalledWith(
-        setModal({ modalOpen: false, modalStatus: "DELETE" })
+        setModal({ modalOpen: true, modalStatus: "DELETE" })
       );
     });
   });
