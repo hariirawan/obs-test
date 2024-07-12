@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import {
+  User,
   deleteUser,
   editUser,
   onChange,
@@ -8,6 +9,7 @@ import {
   selectSelectedUser,
   selectUsers,
   setModal,
+  setSelectedUser,
   setUsers,
 } from "../redux/userSlice";
 import axios from "axios";
@@ -20,7 +22,7 @@ export function useModal() {
   };
 
   const handleOpen = (status: "ADD" | "EDIT" | "DELETE" | null) => {
-    dispatch(setModal({ modalOpen: false, modalStatus: status }));
+    dispatch(setModal({ modalOpen: true, modalStatus: status }));
   };
 
   return {
@@ -74,9 +76,15 @@ export function useCreateAndUpdate() {
     }
   };
 
+  const handleEdit = (user: User) => {
+    dispatch(setSelectedUser(user));
+    dispatch(setModal({ modalOpen: true, modalStatus: "EDIT" }));
+  };
+
   return {
     data,
     handleChange,
     handleSubmit,
+    handleEdit,
   };
 }
