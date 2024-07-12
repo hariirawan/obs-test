@@ -1,5 +1,3 @@
-markdown
-Salin kode
 
 # React + TypeScript + Vite + Redux Toolkit + Jest
 
