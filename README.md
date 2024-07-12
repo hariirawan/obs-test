@@ -18,5 +18,5 @@ This template provides a minimal setup for React development using Vite, with su
 
 Ensure you have the following installed:
 
-- **Node.js** (recommended version: 14.x or later)
+- **Node.js** (recommended version: 18.x or later)
 - **npm** (comes with Node.js) or **yarn**
