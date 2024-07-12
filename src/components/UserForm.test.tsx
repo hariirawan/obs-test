@@ -36,6 +36,7 @@ describe("UserForm", () => {
     mockuseCreateAndUpdate.mockReturnValue({
       handleSubmit: jest.fn(),
       handleChange: jest.fn(),
+      handleEdit: jest.fn(),
       data: mockData,
     });
   });
@@ -54,6 +55,7 @@ describe("UserForm", () => {
     mockuseCreateAndUpdate.mockReturnValue({
       handleSubmit: mockHandleSubmit,
       handleChange: mockHandleChange,
+      handleEdit: jest.fn(),
       data: { name: "", username: "", email: "", phone: "", image: "" },
     });
 
@@ -79,6 +81,7 @@ describe("UserForm", () => {
     mockuseCreateAndUpdate.mockReturnValue({
       handleSubmit: mockHandleSubmit,
       handleChange: mockHandleChange,
+      handleEdit: jest.fn(),
       data: {
         name: "John Doe",
         username: "johndoe",

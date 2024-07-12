@@ -35,6 +35,7 @@ const mockData = {
   phone: "08998123143",
   image: "https://picsum.photos/200/200",
 };
+
 describe("useCRUD", () => {
   beforeEach(() => {
     mockUseDispatch.mockReturnValue(mockDispatch);
@@ -96,19 +97,15 @@ describe("useCRUD", () => {
 
   describe("useDelete", () => {
     it("should delete a user and dispatch actions", async () => {
-      // Arrange
       mockAxios
         .onDelete("https://jsonplaceholder.typicode.com/users/1")
-        .reply(201, mockData); // Mocking a successful API call
+        .reply(201, mockData);
 
       const { result } = renderHook(() => useDelete());
 
-      // Act
       await act(async () => {
-        result.current.handleDelete(1); // Call the delete function with user id 1
+        result.current.handleDelete(1);
       });
-
-      // Assert
       expect(mockDispatch).toHaveBeenCalledWith(deleteUser({ id: 1 }));
       expect(mockDispatch).toHaveBeenCalledWith(
         setModal({ modalOpen: false, modalStatus: null })

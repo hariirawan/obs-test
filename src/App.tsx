@@ -24,14 +24,13 @@ import FadeMenu from "./components/FadeMenu";
 import axios from "axios";
 import DialogConfirmation from "./components/DialogConfirmation";
 import NavBar from "./components/Navbar";
+import { useCreateAndUpdate, useModal } from "./hooks/useCRUD";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
   const users = useSelector(selectUsers);
-
-  const handleOpenModal = () => {
-    dispatch(setModal({ modalOpen: true, modalStatus: "ADD" }));
-  };
+  const { handleOpen } = useModal();
+  const { handleEdit } = useCreateAndUpdate();
 
   useEffect(() => {
     axios
@@ -39,11 +38,6 @@ const App: React.FC = () => {
       .then((data) => dispatch(setUsers(data.data)))
       .catch((error) => console.error("Error:", error));
   }, [dispatch]);
-
-  const handleEdit = (user: User) => {
-    dispatch(setSelectedUser(user));
-    dispatch(setModal({ modalOpen: true, modalStatus: "EDIT" }));
-  };
 
   return (
     <Container
@@ -103,7 +97,7 @@ const App: React.FC = () => {
           bottom: 16,
           right: 16,
         }}
-        onClick={handleOpenModal}
+        onClick={() => handleOpen("ADD")}
       >
         <AddIcon />
       </Fab>
