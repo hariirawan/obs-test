@@ -23,6 +23,7 @@ import { useSelector } from "react-redux";
 import FadeMenu from "./components/FadeMenu";
 import axios from "axios";
 import DialogConfirmation from "./components/DialogConfirmation";
+import NavBar from "./components/Navbar";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ const App: React.FC = () => {
         height: "100vh",
       }}
     >
+      <NavBar />
       <List sx={{ maxHeight: "90vh", overflowY: "scroll" }}>
         {users.map((val, key) => {
           return (
